@@ -1,18 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app/App';
-import './index.css';
-import store from './reducers/reducer';
+import { App, store } from './app/App';
 
-const render = () => {
+const mainRender = () => {
 	ReactDOM.render(
-  		<App counter={ store.getState().counter }/>,
-  		document.getElementById('root')
+			<App tasks={ store.getState().todoList }/>,
+			document.getElementById('root')
 	);	
-}
+};
 
 store.subscribe(()=>{
-	render();
+	console.log( store.getState() );
+	mainRender();
 });
 
-render();
+mainRender();
+
+
